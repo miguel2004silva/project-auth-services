@@ -1,7 +1,4 @@
 import { Request, Response } from "express"
-import { Sequelize, DataTypes } from 'sequelize';
-import { User } from "../models/user";
-import { AuthRepository } from "../repository/auth-repository";
 import { AuthService } from "../services/auth-services";
 
 
@@ -30,6 +27,21 @@ export class AuthController{
         } catch (error){
             console.error(error)
             return res.status(400).json({error: "Erro ao registrar o usuário"})
+        }
+    }
+    public async login(req:Request, res:Response){
+        const { email, password } = req.body
+        try{
+            const jwt = await this.authService.login({
+                email,
+                password
+            })
+            return res.status(200).json({
+                "access_token": jwt
+            })
+        } catch(error){
+            console.error(error)
+            return res.status(400).json({error: "Erro ao fazer login"})
         }
     }
 

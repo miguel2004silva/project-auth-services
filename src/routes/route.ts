@@ -8,5 +8,6 @@ const route : Router = Router();
 
 route.post("/register", authController.register.bind(authController));
 route.get("/health", authController.health.bind(authController));
+route.post("/login", authController.login.bind(authController))
 
 export default route;

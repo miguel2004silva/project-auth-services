@@ -12,7 +12,7 @@ app.use('/auth',route)
 async function bootstrap(){
    try{
     await sequelize.authenticate();
-    // await sequelize.sync() // Criação das tabelas do banco de dados
+     await sequelize.sync() // Criação das tabelas do banco de dados
     app.listen(port, () => {
         console.log(`API is running in port ${port}`)
     })

@@ -1,5 +1,5 @@
 import { CreateDto } from "../DTO/auth-dto";
-import { User } from "../models/user";
+import User from "../models/user";
 
 export class AuthRepository{
     public async create(payload: CreateDto){
@@ -7,7 +7,7 @@ export class AuthRepository{
             ...payload
         })
     }
-    public async findByEmail(email: string){
+    public async findByEmail(email: string): Promise<User | null>{
         return await User.findOne({
             where: {
                 email: email
