@@ -27,10 +27,11 @@ User.init({
   sequelize,timestamps : true
 })
 
-export default User;
-
 export interface UserResponse{
     email: string;
     password: string;
     id: string;
 }
+
+export default User;
+

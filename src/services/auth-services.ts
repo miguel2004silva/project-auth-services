@@ -5,9 +5,10 @@ import { ArgonServices } from "./argon-services";
 import User, { UserResponse } from "../models/user";
 import { verify } from "node:crypto";
 import { jwtServices } from "./jwt-services";
+import { UserRepository } from "../repository/user-repository";
 
 export class AuthService{
-    private authRepository = new AuthRepository()
+    private userRepository = new UserRepository()
     private argonServices = new ArgonServices()
     private jwtServices = new jwtServices()
     public async create(payload: CreateDto): Promise<UserResponse>{
@@ -15,12 +16,12 @@ export class AuthService{
             throw new Error("Payload de criação veio vazio")
         }
         try{
-        const findUser = await this.authRepository.findByEmail(payload.email)
+        const findUser = await this.userRepository.findByEmail(payload.email)
         if(findUser){
             throw new Error("E-mail já está sendo utilizado")
         }
         const hash = await this.argonServices.hash(payload.password)
-        const user = await this.authRepository.create({
+        const user = await this.userRepository.create({
             email: payload.email,
             password: hash
         })
@@ -38,7 +39,7 @@ export class AuthService{
 
     public async findByEmail(email: string): Promise<UserResponse>{
         try{
-            const user = await this.authRepository.findByEmail(email)
+            const user = await this.userRepository.findByEmail(email)
             if(!user){
                 throw new Error("Verifique seu e-mail")
             } 
