@@ -78,4 +78,12 @@ A API estará disponível em `http://localhost`.
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/miguel-de-sa-silva)
 
 ---
-*Este projeto foi desenvolvido com fins educacionais para explorar.*
+
+## 💡 Sobre o Desenvolvimento
+
+Este projeto mescla o desenvolvimento tradicional com inteligência artificial:
+- **Backend:** Desenvolvido 100% à mão, com foco em segurança, performance e boas práticas utilizando Node.js, Express e Argon2.
+- **Frontend:** Desenvolvido e aperfeiçoado com a ajuda da IA **Antigravity**, focado em entregar uma UI/UX moderna e intuitiva com React.
+
+---
+*Este projeto foi desenvolvido com fins educacionais.*
